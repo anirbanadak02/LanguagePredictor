@@ -12,7 +12,7 @@
   
 <servlet-mapping>  
 <servlet-name>WebController</servlet-name>  
-<url-pattern>predictLanguage</url-pattern>  
+<url-pattern>/predictLanguage</url-pattern>  
 </servlet-mapping>  
   
 </web-app>

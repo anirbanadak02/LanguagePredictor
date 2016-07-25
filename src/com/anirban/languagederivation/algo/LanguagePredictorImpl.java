@@ -98,7 +98,7 @@ public class LanguagePredictorImpl implements LanguagePredictor {
 	@Override
 	public Map<String, Set<String>> buildDictionary() throws IOException {
 		Map<String, Set<String>> dataDictionary = new ConcurrentHashMap<>();
-
+		//Put the DataDictionary folder on C: drive and then test the application or make necessary path change.
 		Files.walk(Paths.get("c://DataDictionary")).forEach(filePath -> {
 			if (Files.isRegularFile(filePath)) {
 				String language = getLanguage(filePath.toString());
@@ -153,6 +153,7 @@ public class LanguagePredictorImpl implements LanguagePredictor {
 	 */
 	@Override
 	public boolean validateText(String text) {
+		text = StringUtils.lowerCase(text.replaceAll(NON_ALPHABET_AND_SPACE_REGEX, ""));
 		Pattern pattern = Pattern.compile(LEGAL_CHARACTERS_REGEX);
 		Matcher matcher = pattern.matcher(text);
 		if (matcher.matches()) {
